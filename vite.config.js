@@ -7,6 +7,7 @@ export default defineConfig({
   plugins: [
     react(),
     tailwindcss()
-    base: process.env.VITE_BASE_PATH || "/UPRAK-Farrelaqil"
+    
   ],
+  base: process.env.VITE_BASE_PATH || "/UPRAK-Farrelaqil"
 })
