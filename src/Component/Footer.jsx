@@ -1,86 +1,85 @@
 import React from 'react';
-import fb from '../assets/fb.svg'; 
+import { motion } from 'framer-motion';
 import twitter from '../assets/twitter.svg'; 
-import tele from '../assets/tele.svg'; 
 import ig from '../assets/ig.svg'; 
 import yt from '../assets/yt.svg'; 
-import kode from '../assets/kode.svg'; 
+import kode from '../assets/logoabu2.png'; 
 
 function Footer() {
   return (
-    <footer className="bg-gray-800 text-white pt-12">
-      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 text-sm">
-      
-        <div className="col-span-1">
-          <div className="mb-4">
-            <img src={kode} alt="Petani Kode Logo" className="w-32" />
-          </div>
-          <p className="text-gray-300 mt-2">
-            Tempat belajar budidaya kode (coding) dengan tutorial yang gampang dipahami.
+    <footer id="footer" className="bg-gray-900 text-white pt-12">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div 
+          className="flex flex-col lg:flex-row justify-between gap-y-8 gap-x-12 mb-10"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: 'easeOut' }}
+          viewport={{ once: true }}
+        >
+          {/* Kiri: Logo dan Deskripsi */}
+          <motion.div
+            className="max-w-md"
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1 }}
+            viewport={{ once: true }}
+          >
+            <img src={kode} alt="Farrel Aqil Logo" className="w-28 sm:w-32 mb-4" />
+            <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
+              By creating my own personal website, I aim to showcase my independence, technical skills, and creativity in building a digital identity.
+            </p>
+          </motion.div>
+
+          {/* Kanan: Ikon Media Sosial */}
+          <motion.div 
+            className="text-left lg:text-right"
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1 }}
+            viewport={{ once: true }}
+          >
+            <p className="text-gray-400 text-sm mb-4 font-medium">My Social Media</p>
+            <div className="flex flex-wrap justify-start lg:justify-end gap-3 sm:gap-4">
+              {[ 
+  { href: "https://x.com/thedaaaq", img: twitter, alt: "Twitter", color: "#1DA1F2" },
+  { href: "https://www.instagram.com/thedaa.aq/", img: ig, alt: "Instagram", color: "#C13584" },
+  { href: "https://www.youtube.com/@Thedaaaq", img: yt, alt: "YouTube", color: "#FF0000" }
+].map((item, idx) => (
+  <motion.a 
+    key={idx}
+    href={item.href} 
+    target="_blank" 
+    rel="noopener noreferrer"
+    whileHover={{ scale: 1.2, backgroundColor: item.color }}
+    whileTap={{ scale: 0.95 }}
+    className="rounded-full"
+    style={{ display: 'inline-block', borderRadius: '9999px' }}
+  >
+    <div className="w-10 h-10 sm:w-11 sm:h-11 flex items-center justify-center rounded-full transition duration-200 bg-transparent">
+      <img src={item.img} alt={item.alt} className="w-5 h-5 sm:w-6 sm:h-6" />
+    </div>
+  </motion.a>
+))}
+
+            </div>
+          </motion.div>
+        </motion.div>
+
+        {/* Bawah: Copyright */}
+        <motion.div 
+          className="text-center mt-6 border-t border-gray-700 pt-4"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ delay: 0.5, duration: 0.8 }}
+          viewport={{ once: true }}
+        >
+          <p className="text-gray-500 text-xs sm:text-sm">
+            &copy; {new Date().getFullYear()} <span className="font-semibold">Farrel Aqil</span>
           </p>
-        </div>
-
-        <div>
-          <h3 className="text-lg font-bold mb-2">Belajar</h3>
-          <ul className="space-y-1 text-gray-300">
-            <li><a href="#" className="hover:text-teal-600">Artikel</a></li>
-            <li><a href="#" className="hover:text-teal-600">Tutorial</a></li>
-            <li><a href="#" className="hover:text-teal-600">Buku</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <h3 className="text-lg font-bold mb-2">Popular Tutorial</h3>
-          <ul className="space-y-1 text-gray-300">
-            <li><a href="#" className="hover:text-teal-600">Tutorial Bahasa C</a></li>
-            <li><a href="#" className="hover:text-teal-600">Tutorial Javascript</a></li>
-            <li><a href="#" className="hover:text-teal-600">Tutorial Java</a></li>
-            <li><a href="#" className="hover:text-teal-600">Tutorial PHP</a></li>
-            <li><a href="#" className="hover:text-teal-600">Tutorial Python</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <h3 className="text-lg font-bold mb-2">Social Media</h3>
-          <ul className="space-y-1 text-gray-300">
-            <li><a href="#" className="hover:text-teal-600">Facebook Page</a></li>
-            <li><a href="#" className="hover:text-teal-600">Instagram</a></li>
-            <li><a href="#" className="hover:text-teal-600">Twitter</a></li>
-            <li><a href="#" className="hover:text-teal-600">Youtube Channel</a></li>
-            <li><a href="#" className="hover:text-teal-600">Telegram Channel</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <h3 className="text-lg font-bold mb-2">Petani Kode</h3>
-          <ul className="space-y-1 text-gray-300">
-            <li><a href="#" className="hover:text-teal-600">About</a></li>
-            <li><a href="#" className="hover:text-teal-600">FAQs</a></li>
-            <li><a href="#" className="hover:text-teal-600">Contact</a></li>
-          </ul>
-        </div>
-      </div>
-
-      <div className="mt-10 text-center">
-        <p className="text-gray-400 text-sm mb-4">Ikuti Kami di</p>
-        <div className="flex justify-center space-x-4 mb-6">
-          <img src={fb} alt="Facebook" className="w-8 h-8 rounded-full" />
-          <img src={twitter} alt="Twitter" className="w-8 h-8 rounded-full" />
-          <img src={tele} alt="Telegram" className="w-8 h-8 rounded-full" />
-          <img src={ig} alt="Instagram" className="w-8 h-8 rounded-full" />
-          <img src={yt} alt="YouTube" className="w-8 h-8 rounded-full" />
-        </div>
-        <p className="text-gray-500 text-xs pb-4">
-          &copy; {new Date().getFullYear()} <span className="font-semibold">Petani Kode</span> • Made with <span className="text-red-400">❤️</span> using Hugo 0.134.0
-        </p>
+        </motion.div>
       </div>
     </footer>
   );
 }
 
 export default Footer;
-
-
-
-
-
